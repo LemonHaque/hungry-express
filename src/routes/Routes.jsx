@@ -21,6 +21,10 @@ const router = createBrowserRouter([
                 path:'/about',
                 element:<About></About>
             },
+            {
+                path:'/recipes/:id',
+                element:<ChefRecipes></ChefRecipes>
+            },
         ]
     }
 ])
