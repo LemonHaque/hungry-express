@@ -1,7 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import img from '../../../public/images/profile.png'
+import { AuthContext } from '../../provider/AuthProvider';
+import { FaUserCircle } from 'react-icons/fa';
+
 const Header = () => {
+    const { user } = useContext(AuthContext);
+
     return (
         <div className="navbar py-4 px-16 shadow top-0">
             <div className="navbar-start">
@@ -27,9 +32,21 @@ const Header = () => {
                 </ul>
             </div>
             <div className="navbar-end gap-5">
-                <NavLink className='btn btn-error hover:bg-red-500'>Profile</NavLink>
-                <NavLink><button className='btn btn-error hover:bg-red-500'>Login</button></NavLink>
-                <img className='rounded-full w-14' src={img} alt="" />
+
+
+
+                {user ?
+                    <NavLink className='btn btn-error bg-red-500 shadow-lg shadow-red-500/50 hover:shadow-red-500/40 text-white font-semibold rounded-lg'>Logout
+                    </NavLink> :
+                    <NavLink to='/login' className='btn btn-error bg-red-500 shadow-lg shadow-red-500/50 hover:shadow-red-500/40 text-white font-semibold rounded-lg'>  Login
+                    </NavLink>
+                }
+
+                {
+                    user && <NavLink><img className='rounded-full w-14' src={img} alt="" /></NavLink>
+                }
+
+
             </div>
         </div>
     );

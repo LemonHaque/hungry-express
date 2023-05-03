@@ -27,7 +27,7 @@ const Home = () => {
 
                     <p className='text-xl my-6'>Hungry Express will give you the most popular chef's along with their recipes also hundres of their information. Also you will be amused to use our mobile app.</p>
                     <div>
-                        <button className='btn bg-red-600 hover:bg-red-700 mr-4'>Explore More</button>
+                        <button className='btn btn-error bg-red-500 shadow-lg shadow-red-500/50 hover:shadow-red-500/40 text-white font-semibold rounded-lg'>Explore More</button>
                         
                     </div>
 
@@ -54,7 +54,7 @@ const Home = () => {
             <div className=' grid sm:mx-24 lg:grid-cols-3 gap-8'>
                 
                 {
-                    chefData.map(chef => <div>
+                    chefData.map(chef => <div key={chef.id}>
 
                         
                             <div className="card rounded w-96 bg-gray-100 shadow-xl my-4">
@@ -68,7 +68,7 @@ const Home = () => {
                                     <p>Likes: {chef.likes}</p>
                                     <div className="card-actions">
                                         
-                                        <Link to={`/recipes/${chef.id}`}><button  className="btn btn-error hover:bg-red-700 hover:text-white">View Recipe</button></Link>
+                                        <Link to={`/recipes/${chef.id}`}><button  className="btn btn-error bg-red-500 shadow-lg shadow-red-500/50 hover:shadow-red-500/40 text-white font-semibold rounded-lg">View Recipe</button></Link>
                                     </div>
                                 </div>
                             </div>
