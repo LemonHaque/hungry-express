@@ -6,25 +6,19 @@ import About from "../pages/About/About";
 
 const router = createBrowserRouter([
     {
-        path:'/',
-        element:<Main></Main>,
-        children:[
+        path: '/',
+        element: <Main></Main>,
+        children: [
             {
-                path:'/',
-                element:<Home></Home>
+                path: '/',
+                element: <Home></Home>
             },
             {
-                path:'/recipes',
-                element:<ChefRecipes></ChefRecipes>
-            },
-            {
-                path:'/about',
-                element:<About></About>
-            },
-            {
-                path:'/recipes/:id',
-                element:<ChefRecipes></ChefRecipes>
-            },
+                path: '/recipes/:id',
+                element: <ChefRecipes></ChefRecipes>,
+                loader: ({ params }) => fetch(`http://localhost:5000/recipes/${params.id}`),
+
+            }
         ]
     }
 ])

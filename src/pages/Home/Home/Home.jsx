@@ -5,12 +5,12 @@ import { Link } from 'react-router-dom';
 
 const Home = () => {
 
-    const [recipes, setrecipes] = useState([])
+    const [chefData, setchefData] = useState([])
 
     useEffect(() => {
-        fetch('http://localhost:5000/recipes')
+        fetch('http://localhost:5000/chefData')
             .then(res => res.json())
-            .then(data => setrecipes(data))
+            .then(data => setchefData(data))
     }, [])
     return (
         <div>
@@ -27,8 +27,8 @@ const Home = () => {
 
                     <p className='text-xl my-6'>Hungry Express will give you the most popular chef's along with their recipes also hundres of their information. Also you will be amused to use our mobile app.</p>
                     <div>
-                        <button className='btn bg-red-600 hover:bg-red-700 mr-4'>See More</button>
-                        <button className='btn bg-red-600 hover:bg-red-700'>Download App</button>
+                        <button className='btn bg-red-600 hover:bg-red-700 mr-4'>Explore More</button>
+                        
                     </div>
 
                 </div>
@@ -54,21 +54,21 @@ const Home = () => {
             <div className=' grid sm:mx-24 lg:grid-cols-3 gap-8'>
                 
                 {
-                    recipes.map(recipe => <div>
+                    chefData.map(chef => <div>
 
                         
                             <div className="card rounded w-96 bg-gray-100 shadow-xl my-4">
                                 <figure className="h-64">
-                                    <img  src={recipe.photoUrl} alt="Shoes" className="rounded-sm text-center" />
+                                    <img  src={chef.photoUrl} alt="Shoes" className="rounded-sm text-center" />
                                 </figure>
                                 <div className="card-body items-center text-center">
-                                    <h2 className="card-title text-red-600 text-3xl semibold">{recipe.chefName}</h2>
-                                    <p>Years of Experience: {recipe.yearsOfExperience}</p>
-                                    <p>Numbers of Recipes: {recipe.numberOfRecipes}</p>
-                                    <p>Likes: {recipe.likes}</p>
+                                    <h2 className="card-title text-red-600 text-3xl semibold">{chef.chefName}</h2>
+                                    <p>Years of Experience: {chef.yearsOfExperience}</p>
+                                    <p>Numbers of Recipes: {chef.numberOfRecipes}</p>
+                                    <p>Likes: {chef.likes}</p>
                                     <div className="card-actions">
                                         
-                                        <Link to={`/recipes/${recipe.id}`}><button  className="btn btn-error hover:bg-red-700 hover:text-white">View Recipe</button></Link>
+                                        <Link to={`/recipes/${chef.id}`}><button  className="btn btn-error hover:bg-red-700 hover:text-white">View Recipe</button></Link>
                                     </div>
                                 </div>
                             </div>
