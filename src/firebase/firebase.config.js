@@ -5,12 +5,12 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyBrAPXz5nGgrLXtY6Qi2dXicu_ri4lkomU",
-  authDomain: "hungry-express.firebaseapp.com",
-  projectId: "hungry-express",
-  storageBucket: "hungry-express.appspot.com",
-  messagingSenderId: "134791129699",
-  appId: "1:134791129699:web:0fde4d3fff4e64ff682656"
+  apiKey: import.meta.env.VITE_APIKEY,
+  authDomain: import.meta.env.VITE_AUTHDOMAIN,
+  projectId: import.meta.env.VITE_PROJECTID,
+  storageBucket: import.meta.env.VITE_STORAGEBUCKET,
+  messagingSenderId: import.meta.env.VITE_MESSAGINGSENDERID,
+  appId: import.meta.env.VITE_APPID
 };
 
 // Initialize Firebase
