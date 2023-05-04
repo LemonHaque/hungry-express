@@ -22,7 +22,6 @@ const Header = () => {
                     </label>
                     <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                         <NavLink to='/' className={({ isActive }) => (isActive ? 'text-red-600' : '')}> <li><a>Home</a></li> </NavLink>
-                        <NavLink to='/recipes' className={({ isActive }) => (isActive ? 'text-red-600' : '')}> <li><a>Chef Recipes</a></li> </NavLink>
                         <NavLink to='/blog' className={({ isActive }) => (isActive ? 'text-red-600' : '')}><li><a>Blog</a></li></NavLink>
                         <NavLink to='/register' className={({ isActive }) => (isActive ? 'text-red-600' : '')}><li><a>Register</a></li></NavLink>
                     </ul>
@@ -32,7 +31,6 @@ const Header = () => {
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
                     <NavLink to='/' className={({ isActive }) => (isActive ? 'text-red-600' : '')}> <li><a>Home</a></li> </NavLink>
-                    <NavLink to='/recipes' className={({ isActive }) => (isActive ? 'text-red-600' : '')}> <li><a>Chef Recipes</a></li> </NavLink>
                     <NavLink to='/blog' className={({ isActive }) => (isActive ? 'text-red-600' : '')}><li><a>Blog</a></li></NavLink>
                     <NavLink to='/register' className={({ isActive }) => (isActive ? 'text-red-600' : '')}><li><a>Register</a></li></NavLink>
                 </ul>
