@@ -1,39 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useLoaderData, useParams } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const ChefRecipes = () => {
     const { id } = useParams();
     const recipes = useLoaderData();
     console.log(recipes.recipes);
-    // const [recipes, setrecipes] = useState([])
 
-    // useEffect(() => {
-    //     fetch('https://hungry-express-server-lemonhaque.vercel.app/recipes')
-    //         .then(res => res.json())
-    //         .then(data => setrecipes(data))
-    // }, [])
+    const [fav, setFav] = useState(true)
+
+    const toastHandle = (e) => {
+        setFav(false)
+        toast('added to favorite')
+    }
 
     return (
-        // <div className='mx-10'>
-        //     <h2 className='text-center text-4xl my-10 font-semibold'>All Recipes</h2>
-        //     <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-8 my-20'>
-        //         {
-        //             recipes.map(recipe => <p key={recipe.id}>
 
-        //                 <div className=" bg-gray-100 rounded shadow-xl h-96">
-        //                     <div className="card-body">
-        //                         <h2 className="text-2xl text-center text-red-600 font-bold">{recipe.recipe.recipe_name}</h2>
-        //                         <h3 className='font-semibold'>I ngredients: <br />{recipe.recipe.ingredients}</h3>
-        //                         <p>{recipe.recipe.cooking_method}</p>
-
-
-        //                     </div>
-        //                 </div>
-
-        //             </p>)
-        //         }
-        //     </div>
-        // </div>
         <div>
             {/* Details Section start */}
             <div>
@@ -61,8 +44,8 @@ const ChefRecipes = () => {
             {/* details section end */}
             <h2 className='font-semibold text-4xl text-red-600 text-center my-10'>Recipe Details</h2>
 
-            <div className='grid sm:mx-24 md:grid-cols-3 my-8'>
-            
+            <div className='md:grid gap-4 sm:mx-24 md:grid-cols-2 lg:grid-cols-3 my-8'>
+
 
                 {
                     recipes.recipes.map(r => <div>
@@ -72,12 +55,12 @@ const ChefRecipes = () => {
                                 <img className='h-48 rounded-lg' src={r.img} alt="" />
                                 <h2 className="card-title">{r.recipe_name}</h2>
                                 <p><span className='font-semibold text-lg'>Ingredients: </span> {r.ingredients}</p>
-                                <p><span className='font-semibold text-lg'>Cooking Method: </span> {r.cooking_method
-                                }</p>
+                                <p><span className='font-semibold text-lg'>Cooking Method: </span> {r.cooking_method.length > 180 ? r.cooking_method.slice(0, 180) : r.cooking_method}....</p>
                                 <p><span className='font-semibold text-lg'>Ratings: </span> {r.rating}</p>
 
                                 <div className="card-actions justify-end">
-                                    <button className="btn btn-error bg-red-500 shadow-lg shadow-red-500/50 hover:shadow-red-500/40 text-white font-semibold rounded-lg">Add to Favourite</button>
+                                    <button disabled={!fav} onClick={toastHandle} className="btn btn-error bg-red-500 shadow-lg shadow-red-500/50 hover:shadow-red-500/40 text-white font-semibold rounded-lg">Add to Favourite</button>
+                                    <ToastContainer></ToastContainer>
 
                                 </div>
                             </div>

@@ -1,12 +1,45 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { GithubAuthProvider, GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
 import { AuthContext } from '../../provider/AuthProvider';
+import { FaGithub, FaGoogle } from 'react-icons/fa';
+import app from '../../firebase/firebase.config';
+
 
 const Login = () => {
+    const [user, setUser] = useState()
+    const auth = getAuth(app)
+    const provider = new GoogleAuthProvider();
+    const githubProvider = new GithubAuthProvider();
+
+    const handleGoogleSignIn = () => {
+        signInWithPopup(auth, provider)
+            .then(result => {
+                const loggedUser = result.user;
+                console.log(loggedUser);
+                setUser(loggedUser);
+            })
+            .catch(error => {
+                console.log(error);
+            })
+    }
+
+    const handleGithubLogin = () => {
+        signInWithPopup(auth, githubProvider)
+            .then((result) => {
+                const user = result.user;
+                console.log(user);
+            }).catch((error) => {
+                const errorMessage = error.message;
+                console.log(errorMessage);
+            });
+    }
+
+
     const { signIn } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
-    const from = location.state?.from?.pathname || "/" 
+    const from = location.state?.from?.pathname || "/"
 
     const handleLogin = event => {
         event.preventDefault();
@@ -20,9 +53,10 @@ const Login = () => {
             .then(result => {
                 const loggedUser = result.user;
                 console.log(loggedUser);
-                navigate(from, {replace:true});
+                navigate(from, { replace: true });
             })
             .catch(error => {
+                const errorMessage = error.message;
                 console.log(error);
             })
     }
@@ -48,6 +82,11 @@ const Login = () => {
                             <p>Forgot Password</p>
                         </div>
                         <button className='w-full my-5 py-2 bg-red-500 shadow-lg shadow-red-500/50 hover:shadow-red-500/40 text-white font-semibold rounded-lg'>Login</button>
+                        <div className='text-center flex flex-col gap-3 mx-8 mb-2'>
+                            <button onClick={handleGoogleSignIn} className="btn btn-outline btn-primary "><FaGoogle className='mr-2'></FaGoogle> Sign in with Google</button>
+                            <button onClick={handleGithubLogin} className="btn btn-outline"><FaGithub className='mr-2'></FaGithub> Sign in with Github</button>
+
+                        </div>
                         <p className='text-center'>Don't have an account? <Link className='text-blue-500' to='/register'>Register here</Link></p>
 
                         <p className='text-red-500'></p>
