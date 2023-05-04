@@ -24,7 +24,7 @@ const Header = () => {
                         <NavLink to='/' className={({ isActive }) => (isActive ? 'text-red-600' : '')}> <li><a>Home</a></li> </NavLink>
                         <NavLink to='/recipes' className={({ isActive }) => (isActive ? 'text-red-600' : '')}> <li><a>Chef Recipes</a></li> </NavLink>
                         <NavLink to='/blog' className={({ isActive }) => (isActive ? 'text-red-600' : '')}><li><a>Blog</a></li></NavLink>
-                        <NavLink to='/about' className={({ isActive }) => (isActive ? 'text-red-600' : '')}><li><a>About</a></li></NavLink>
+                        <NavLink to='/register' className={({ isActive }) => (isActive ? 'text-red-600' : '')}><li><a>Register</a></li></NavLink>
                     </ul>
                 </div>
                 <NavLink to='/'><a className="btn btn-ghost normal-case text-xl">HungryExpress</a></NavLink>
@@ -34,7 +34,7 @@ const Header = () => {
                     <NavLink to='/' className={({ isActive }) => (isActive ? 'text-red-600' : '')}> <li><a>Home</a></li> </NavLink>
                     <NavLink to='/recipes' className={({ isActive }) => (isActive ? 'text-red-600' : '')}> <li><a>Chef Recipes</a></li> </NavLink>
                     <NavLink to='/blog' className={({ isActive }) => (isActive ? 'text-red-600' : '')}><li><a>Blog</a></li></NavLink>
-                    <NavLink to='/about' className={({ isActive }) => (isActive ? 'text-red-600' : '')}><li><a>About</a></li></NavLink>
+                    <NavLink to='/register' className={({ isActive }) => (isActive ? 'text-red-600' : '')}><li><a>Register</a></li></NavLink>
                 </ul>
             </div>
             <div className="navbar-end gap-5">
